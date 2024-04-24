@@ -20,7 +20,17 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <AuthProvider>{children}</AuthProvider>
-                <Toaster />
+                <Toaster
+                    richColors
+                    position="top-right"
+                    toastOptions={{
+                        style: {
+                            height: '20px',
+                            width: 'max-content',
+                            right: 0,
+                        },
+                    }}
+                />
             </body>
         </html>
     );

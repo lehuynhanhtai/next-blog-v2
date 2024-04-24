@@ -17,7 +17,7 @@ export const POST = async (request: Request) => {
         });
 
         if (!user) {
-            return NextResponse.json({ error: 'User not found' }, { status: 404 });
+            return new Response('User not found', { status: 400 });
         }
 
         const isMatch = await compare(body.password, user.password!);

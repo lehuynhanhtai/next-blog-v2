@@ -3,6 +3,7 @@ import { NextPage } from 'next';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
 
@@ -11,7 +12,7 @@ interface IProps {
 }
 
 const Login: NextPage = ({ searchParams }: IProps) => {
-    const { data: session } = useSession();
+    const router = useRouter();
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -19,11 +20,16 @@ const Login: NextPage = ({ searchParams }: IProps) => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        await signIn('credentials', {
+        const res = await signIn('credentials', {
             email: formData.email,
             password: formData.password,
-            redirect: true,
+            redirect: false,
         });
+        if (res?.ok) {
+            router.push('/');
+        } else {
+            toast.error('Tài khoản hoặc mật khẩu không đúng');
+        }
     };
 
     return (
@@ -94,15 +100,15 @@ const Login: NextPage = ({ searchParams }: IProps) => {
                         </button>
                     </div>
                     <div className="flex items-center justify-center gap-8">
-                        {/* <button onClick={() => signIn('google')}>
+                        <button onClick={() => signIn('google')}>
                             <Image src="/google.png" alt="Google" width={30} height={30} />
                         </button>
                         <button>
-                            <Image src="/facebook.png" alt="Google" width={30} height={30} />
+                            <Image src="/facebook.png" alt="Facebook" width={30} height={30} />
                         </button>
-                        <button>
-                            <Image src="/github.png" alt="Google" width={30} height={30} />
-                        </button> */}
+                        <button onClick={() => signIn('github')}>
+                            <Image src="/github.png" alt="Github" width={30} height={30} />
+                        </button>
                     </div>
                     <p className="text-right">
                         Bạn chưa có tài khoản?

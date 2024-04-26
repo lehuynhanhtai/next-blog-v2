@@ -1,60 +1,147 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DATABASE_URL_UNPOOLED")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model Account {
-  id                 String    @id @default(cuid())
-  userId             String
-  providerType       String
-  providerId         String
-  providerAccountId  String
-  refreshToken       String?
-  accessToken        String?
-  accessTokenExpires DateTime?
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  user               User      @relation(fields: [userId], references: [id])
+  id                String  @id @default(cuid()) @map("_id")
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
 
-  @@unique([providerId, providerAccountId])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
 }
 
 model Session {
-  id           String   @id @default(cuid())
-  userId       String
-  expires      DateTime
+  id           String   @id @default(cuid()) @map("_id")
   sessionToken String   @unique
-  accessToken  String   @unique
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  expires      DateTime
+  userId       String
   user         User     @relation(fields: [userId], references: [id])
 }
 
 model User {
-  id            String    @id @default(cuid())
-  role          String    @default("USER")
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  sessions      Session[]
+  id             String     @id @default(cuid()) @map("_id")
+  name           String?
+  role           Role       @default(USER)
+  slogan         String?
+  email          String     @unique
+  password       String?
+  emailVerified  DateTime?
+  image          String?    @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
+  backgroundUser String?
+  birthDay       String?
+  sex            String?
+  accounts       Account[]
+  sessions       Session[]
+  post           Post[]
+  comment        Comment[]
+  chatbot        Chatbot[]
+  chatRoom       Chatroom[]
+  message        Messages[]
+  members        Members[]
 }
 
-model VerificationRequest {
-  id         String   @id @default(cuid())
-  identifier String
+model Chatroom {
+  id        String     @id @default(cuid()) @map("_id")
+  createdAt DateTime   @default(now())
+  img       String?    @default("https://www.gravatar.com/avatar/7141b3553643554a3c97ed69992c27a3?d=wavatar&f=y")
+  roomName  String
+  userEmail String
+  user      User       @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  messages  Messages[]
+  members   Members[]
+}
+
+model Members {
+  id        String   @id @default(cuid()) @map("_id")
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  roomId    String
+  room      Chatroom @relation(fields: [roomId], references: [id], onDelete: Cascade)
+}
+
+model Messages {
+  id         String   @id @default(cuid()) @map("_id")
+  createdAt  DateTime @default(now())
+  text       String
+  chatroomId String
+  chatroom   Chatroom @relation(fields: [chatroomId], references: [id])
+  userEmail  String
+  user       User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model VerificationToken {
+  identifier String   @id @map("_id")
   token      String   @unique
   expires    DateTime
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
 
   @@unique([identifier, token])
+}
+
+model Category {
+  id    String  @id @default(cuid()) @map("_id")
+  slug  String  @unique
+  name  String
+  img   String?
+  posts Post[]
+}
+
+model Post {
+  id           String    @id @default(cuid()) @map("_id")
+  createdAt    DateTime  @default(now())
+  slug         String    @unique
+  title        String
+  content      String
+  img          String?
+  views        Int       @default(0)
+  votes        Int       @default(0)
+  categorySlug String
+  category     Category  @relation(fields: [categorySlug], references: [slug], onDelete: Cascade)
+  userEmail    String
+  user         User      @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  comments     Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  desc      String
+  report    String?
+  like      Int      @default(0)
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug], onDelete: Cascade)
+}
+
+model Chatbot {
+  id          String   @id @default(cuid()) @map("_id")
+  createdAt   DateTime @default(now())
+  userMessage String?
+  botMessage  String?
+  userEmail   String
+  user        User     @relation(fields: [userEmail], references: [email], onDelete: Cascade)
 }

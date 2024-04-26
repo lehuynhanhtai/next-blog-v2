@@ -17,7 +17,7 @@ export const POST = async (request: Request, response: Response) => {
         });
 
         if (existUser) {
-            return NextResponse.json({ message: 'User already exist' }, { status: 400 });
+            return new Response('User already exist', { status: 400 });
         }
         const user = await prisma.user.create({
             data: {
@@ -27,7 +27,7 @@ export const POST = async (request: Request, response: Response) => {
             },
         });
         const { password, ...dataUser } = user;
-        return NextResponse.json({ message: 'Success', data: dataUser }, { status: 200 });
+        return Response.json({ message: 'Success', data: dataUser }, { status: 200 });
     } catch (error) {
         console.log(error);
         return NextResponse.json({ message: 'Internal server error' }, { status: 500 });

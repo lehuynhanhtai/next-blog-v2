@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
+import { getAllUsers } from '@/services/user-services';
+import { register } from '@/services/auth-services';
 const FormRegister: React.FC = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -19,21 +21,16 @@ const FormRegister: React.FC = () => {
   const [isEmailDuplicate, setIsEmailDuplicate] = useState(false);
   useEffect(() => {
     if (formData.email) {
-      const fetchData = async () => {
-        try {
-          const response = await fetch('http://localhost:3000/api/user', {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-          });
-          const data = await response.json();
-          setDataUser(data);
-        } catch (error) {
-          console.error('Error fetching user data:', error);
-        }
-      };
       fetchData();
     }
   }, [formData.email]);
+
+  const fetchData = async () => {
+    const response = await getAllUsers();
+    if (response && response.data) {
+      setDataUser(response.data);
+    }
+  };
   const checkDuplicateEmail = (email: string) => {
     const found = dataUser.some((user: any) => user.email === email);
     setIsEmailDuplicate(found);
@@ -43,16 +40,13 @@ const FormRegister: React.FC = () => {
   };
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const res = await fetch('http://localhost:3000/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
-
-    if (res.ok) {
+    const res = await register(formData);
+    if (res.status === 200) {
+      toast.success(res.data.message);
       router.push('/auth/login');
-    } else {
-      toast.error('Tài khoản đã tồn tại');
+    }
+    if (res.status !== 200) {
+      toast.error(res.data.message);
     }
   };
   return (
@@ -133,10 +127,10 @@ const FormRegister: React.FC = () => {
         </div>
         <div className="relative mt-2 flex items-center">
           <input
-            id="password"
-            name="password"
+            id="retype-password"
+            name="retype-password"
             type="password"
-            autoComplete="current-password"
+            autoComplete="retype-password"
             placeholder="Nhập lại mật khẩu"
             required
             value={retypePassword}

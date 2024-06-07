@@ -1,7 +1,7 @@
 import prisma from '@/lib/db';
 import { signJwtAccessToken } from '@/lib/jwt';
 import { compare } from 'bcrypt';
-import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 interface RequestBody {
   email: string;
   password: string;
@@ -32,6 +32,7 @@ export const POST = async (request: Request) => {
       email: data.email,
     };
     const accessToken = signJwtAccessToken(extractedData);
+    cookies().set('accessToken', accessToken, { expires: new Date(Date.now() + 10 * 1000), httpOnly: true });
     const result = { ...extractedData, accessToken };
     return new Response(JSON.stringify(result), { status: 200 });
   } catch (error) {

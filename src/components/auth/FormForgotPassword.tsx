@@ -69,15 +69,13 @@ const FormForgotPassword: React.FC = () => {
             required
             className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={formData.email}
-            onChange={(e) => {
+            onChange={e => {
               setFormData({ ...formData, email: e.target.value });
               setIsEmailDuplicate(false);
             }}
-            onBlur={(e) => checkDuplicateEmail(e.target.value)}
+            onBlur={e => checkDuplicateEmail(e.target.value)}
           />
-          {isEmailDuplicate && (
-            <FontAwesomeIcon className="absolute right-1" icon={faCheckCircle} style={{ color: '#63E6BE' }} />
-          )}
+          {isEmailDuplicate && <FontAwesomeIcon className="absolute right-1" icon={faCheckCircle} style={{ color: '#63E6BE' }} />}
         </div>
       </div>
 
@@ -97,14 +95,10 @@ const FormForgotPassword: React.FC = () => {
             required
             className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={formData.password}
-            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+            onChange={e => setFormData({ ...formData, password: e.target.value })}
           />
           {/* thêm icon ở đây */}
-          <FontAwesomeIcon
-            icon={showPassword ? faEyeSlash : faEye}
-            className="absolute right-1 cursor-pointer"
-            onClick={togglePasswordVisibility}
-          />
+          <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} className="absolute right-1 cursor-pointer" onClick={togglePasswordVisibility} />
         </div>
       </div>
 
@@ -124,7 +118,7 @@ const FormForgotPassword: React.FC = () => {
             required
             className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             value={formData.newPassword}
-            onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
+            onChange={e => setFormData({ ...formData, newPassword: e.target.value })}
           />
         </div>
       </div>

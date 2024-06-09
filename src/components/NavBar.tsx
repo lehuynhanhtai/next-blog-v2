@@ -32,47 +32,16 @@ const NavBar = () => {
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* LOGO */}
-        <Link
-          href="/"
-          className="relative items-center space-x-3 rtl:space-x-reverse h-12 w-36"
-        >
-          <Image
-            src="/blackLogo.png"
-            alt=""
-            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-            fill
-            priority={true}
-            sizes="( max-width: 768px) 100vw, ( max-width: 1200px) 50vw, 33vw"
-          />
+        <Link href="/" className="relative items-center space-x-3 rtl:space-x-reverse h-12 w-36">
+          <Image src="/blackLogo.png" alt="" className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" fill priority={true} sizes="( max-width: 768px) 100vw, ( max-width: 1200px) 50vw, 33vw" />
         </Link>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           {status === 'unauthenticated' ? (
             <>
-              <svg
-                className="w-6 h-6 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z"
-                />
+              <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
               </svg>
-              <Link
-                href="/auth/login"
-                className={
-                  pathName === '/auth/login'
-                    ? 'text-blue-700 font-medium'
-                    : 'font-medium'
-                }
-              >
+              <Link href="/auth/login" className={pathName === '/auth/login' ? 'text-blue-700 font-medium' : 'font-medium'}>
                 Đăng nhập
               </Link>
             </>
@@ -93,13 +62,7 @@ const NavBar = () => {
                   onClick={() => setDropdownAvatar(!dropdownAvatar)}
                 >
                   <span className="sr-only">Open user menu</span>
-                  <Image
-                    className="rounded-full"
-                    src="/avatar.svg"
-                    alt="user photo"
-                    width={40}
-                    height={40}
-                  />
+                  <Image className="rounded-full" src="/avatar.svg" alt="user photo" width={40} height={40} />
                 </button>
                 {/* MENU USER DOPDOWN */}
                 <div
@@ -115,9 +78,7 @@ const NavBar = () => {
                         replacement: '_',
                       })}
                     </span>
-                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">
-                      {data?.user?.email}
-                    </span>
+                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{data?.user?.email}</span>
                   </div>
                   {/* USER MENU */}
                   <ul className="py-2" aria-labelledby="user-menu-button">
@@ -165,20 +126,8 @@ const NavBar = () => {
             onClick={() => setDropdownBugger(!dropdownBugger)}
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
+            <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
             </svg>
           </button>
         </div>

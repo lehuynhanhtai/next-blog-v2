@@ -1,6 +1,7 @@
 import FormForgotPassword from '@/components/auth/FormForgotPassword';
+import { NextPage } from 'next';
 
-const ForgotPassword = () => {
+const ForgotPassword: NextPage = () => {
   return (
     <div className="flex min-h-[80vh] flex-col justify-center px-6 py-12 lg:px-8 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">

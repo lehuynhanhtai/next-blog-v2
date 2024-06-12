@@ -1,4 +1,5 @@
 'use client';
+import Loading from 'app/loading';
 import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -6,6 +7,13 @@ import { useRouter } from 'next/navigation';
 const ButtonSocials = () => {
   const { status } = useSession();
   const router = useRouter();
+  if (status === 'loading') {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center ">
+        <Loading />
+      </div>
+    );
+  }
   if (status === 'authenticated') {
     router.push('/');
   }

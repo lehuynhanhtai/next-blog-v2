@@ -1,10 +1,10 @@
 'use client';
 import { signIn } from 'next-auth/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
+import ButtonSocials from './ButtonSocials';
 
 const FromLogin: React.FC = () => {
   const router = useRouter();
@@ -19,10 +19,11 @@ const FromLogin: React.FC = () => {
       password: formData.password,
       redirect: false,
     });
-    if (res?.ok) {
-      router.push('/');
-    } else {
+    if (res?.status === 401) {
       toast.error('Tài khoản hoặc mật khẩu không đúng');
+    }
+    if (res?.status === 200) {
+      router.push('/');
     }
   };
   return (
@@ -79,17 +80,7 @@ const FromLogin: React.FC = () => {
           Đăng nhập
         </button>
       </div>
-      <div className="flex items-center justify-center gap-8">
-        <button onClick={() => signIn('google')}>
-          <Image src="/google.png" alt="Google" width={30} height={30} />
-        </button>
-        <button>
-          <Image src="/facebook.png" alt="Facebook" width={30} height={30} />
-        </button>
-        <button onClick={() => signIn('github')}>
-          <Image src="/github.png" alt="Github" width={30} height={30} />
-        </button>
-      </div>
+      <ButtonSocials />
       <p className="text-right">
         Bạn chưa có tài khoản?
         <Link href="/auth/register" className="ml-2 hover:text-indigo-700">

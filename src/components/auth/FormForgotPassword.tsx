@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import ButtonSocials from './ButtonSocials';
 
 const FormForgotPassword: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -132,17 +133,7 @@ const FormForgotPassword: React.FC = () => {
         </button>
       </div>
       {/* BUTTON GROUP SOCIAL */}
-      <div className="flex items-center justify-center gap-8">
-        <button>
-          <Image src="/google.png" alt="Google" width={30} height={30} />
-        </button>
-        <button>
-          <Image src="/facebook.png" alt="Google" width={30} height={30} />
-        </button>
-        <button>
-          <Image src="/github.png" alt="Google" width={30} height={30} />
-        </button>
-      </div>
+      <ButtonSocials />
 
       <p className="text-right">
         Quay lại

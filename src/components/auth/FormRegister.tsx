@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
 import { getAllUsers } from '@/services/user-services';
 import { register } from '@/services/auth-services';
+import ButtonSocials from './ButtonSocials';
 const FormRegister: React.FC = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -145,17 +146,7 @@ const FormRegister: React.FC = () => {
         </button>
       </div>
       {/* GROUP BUTTON SOCIAL */}
-      <div className="flex items-center justify-center gap-8">
-        <button>
-          <Image src="/google.png" alt="Google" width={30} height={30} />
-        </button>
-        <button>
-          <Image src="/facebook.png" alt="Google" width={30} height={30} />
-        </button>
-        <button>
-          <Image src="/github.png" alt="Google" width={30} height={30} />
-        </button>
-      </div>
+      <ButtonSocials />
       <p className="text-right">
         Quay lại
         <Link href="/auth/login" className="ml-2 hover:text-indigo-700">

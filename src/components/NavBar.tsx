@@ -25,9 +25,6 @@ const NavBar = () => {
     { id: 5, name: 'Tùy chỉnh tài khoản', url: '#' },
     { id: 6, name: 'Đăng xuất', url: '#' },
   ];
-  const handleLogout = () => {
-    signOut();
-  };
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -62,15 +59,21 @@ const NavBar = () => {
                   onClick={() => setDropdownAvatar(!dropdownAvatar)}
                 >
                   <span className="sr-only">Open user menu</span>
-                  <Image className="rounded-full" src="/avatar.svg" alt="user photo" width={40} height={40} />
+                  {data?.user?.image || undefined ? (
+                    <Image className="rounded-full" src={data?.user?.image!} alt="user photo" width={40} height={40} />
+                  ) : (
+                    <div className="rounded-full bg-gray-100 animate-spin">
+                      <Image className="rounded-full" src="/Loading.png" alt="user photo" width={35} height={35} />
+                    </div>
+                  )}
                 </button>
                 {/* MENU USER DOPDOWN */}
                 <div
-                  className={`absolute right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600
+                  className={`absolute whitespace-nowrap right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600
                     ${dropdownAvatar ? 'block' : 'hidden'}`}
                   id="user-dropdown"
                 >
-                  <div className="px-4 py-3">
+                  <div className="px-4 py-3 ">
                     <span className="block text-sm text-gray-900 dark:text-white">
                       @
                       {slugify(data?.user?.name ?? '', {
@@ -87,7 +90,7 @@ const NavBar = () => {
                         {name === 'Đăng xuất' ? (
                           <Link
                             href={url}
-                            onClick={handleLogout}
+                            onClick={() => signOut()}
                             className={`${
                               pathName === url
                                 ? 'text-blue-700 font-medium block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white'

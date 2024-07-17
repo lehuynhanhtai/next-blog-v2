@@ -5,7 +5,7 @@ import { AuthProvider } from '../providers/AuthProvider';
 import { Toaster } from 'sonner';
 import NavBar from '@/components/NavBar';
 import { DarkModeProvider } from '@/context/darkMode-context';
-import DarkModeToggle from '@/components/DarkMode';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,9 +24,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <DarkModeProvider>
           <AuthProvider>
-            <DarkModeToggle />
             <NavBar />
-            <div className="bg-white dark:bg-gray-800">{children}</div>
+            <div className="bg-white dark:bg-gray-700 flex-1">{children}</div>
+            <Footer />
           </AuthProvider>
         </DarkModeProvider>
         <Toaster

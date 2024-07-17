@@ -1,4 +1,5 @@
 'use client';
+import { useDarkMode } from '@/context/darkMode-context';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,12 +12,15 @@ const NavBar = () => {
   const pathName = usePathname();
   const [dropdownAvatar, setDropdownAvatar] = useState(false);
   const [dropdownBugger, setDropdownBugger] = useState(false);
+  const { darkMode } = useDarkMode();
+
   const navLink = [
     { id: 1, name: 'Trang chủ', url: '/' },
     { id: 2, name: 'Liên hệ', url: '/contact' },
     { id: 3, name: 'Về S-Blog', url: '/about' },
     { id: 4, name: 'Tìm kiếm', url: '/search' },
   ];
+
   const LinkAvatar = [
     { id: 1, name: 'Trang cá nhân', url: '#' },
     { id: 2, name: 'Bài viết của tôi', url: '#' },
@@ -25,23 +29,26 @@ const NavBar = () => {
     { id: 5, name: 'Tùy chỉnh tài khoản', url: '#' },
     { id: 6, name: 'Đăng xuất', url: '#' },
   ];
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         {/* LOGO */}
         <Link href="/" className="relative items-center space-x-3 rtl:space-x-reverse h-12 w-36">
-          <Image src="/blackLogo.png" alt="" className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white" fill priority={true} sizes="( max-width: 768px) 100vw, ( max-width: 1200px) 50vw, 33vw" />
+          <Image
+            src={darkMode === true ? '/whiteLogo.png' : '/blackLogo.png'}
+            alt="logo"
+            className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+            fill
+            priority={true}
+            sizes="( max-width: 768px) 100vw, ( max-width: 1200px) 50vw, 33vw"
+          />
         </Link>
-        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse dark:text-white">
           {status === 'unauthenticated' ? (
-            <>
-              <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14v3m-3-6V7a3 3 0 1 1 6 0v4m-8 0h10a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1Z" />
-              </svg>
-              <Link href="/auth/login" className={pathName === '/auth/login' ? 'text-blue-700 font-medium' : 'font-medium'}>
-                Đăng nhập
-              </Link>
-            </>
+            <Link href="/auth/login" className={pathName === '/auth/login' ? 'text-blue-700' : 'font-medium'}>
+              <span className="font-medium hover:text-blue-500">Đăng nhập</span>
+            </Link>
           ) : (
             <>
               <Link href={'/write'} className="font-medium md:mr-4">
@@ -81,7 +88,7 @@ const NavBar = () => {
                         replacement: '_',
                       })}
                     </span>
-                    <span className="block text-sm  text-gray-500 truncate dark:text-gray-400">{data?.user?.email}</span>
+                    <span className="block text-sm text-gray-500 truncate dark:text-gray-400">{data?.user?.email}</span>
                   </div>
                   {/* USER MENU */}
                   <ul className="py-2" aria-labelledby="user-menu-button">

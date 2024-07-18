@@ -6,7 +6,7 @@ export default function BackToTop() {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 600) {
         setBachToTop(true);
       } else {
         setBachToTop(false);
@@ -19,7 +19,7 @@ export default function BackToTop() {
   };
 
   return (
-    <div className="absolute right-5 bottom-0">
+    <div className="absolute right-5 bottom-5">
       {backToTop && (
         <div onClick={scrollToTop} className="cursor-pointer border p-2">
           <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

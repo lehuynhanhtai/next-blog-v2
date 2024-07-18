@@ -2,12 +2,14 @@
 import { useDarkMode } from '@/context/darkMode-context';
 import Image from 'next/image';
 import Link from 'next/link';
+import BackToTop from './BackToTop';
 
 const Footer = () => {
   const { darkMode } = useDarkMode();
 
   return (
-    <footer className="bg-white dark:bg-gray-900 mt-auto">
+    <footer className="relative bg-white dark:bg-gray-900 mt-auto">
+      <BackToTop />
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className="md:flex md:justify-between">
           <Link href="/" className="relative items-center space-x-3 rtl:space-x-reverse h-12 w-36">

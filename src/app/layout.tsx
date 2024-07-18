@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import { AuthProvider } from '../providers/AuthProvider';
 import { Toaster } from 'sonner';
 import NavBar from '@/components/NavBar';
 import { DarkModeProvider } from '@/context/darkMode-context';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
+import { Suspense } from 'react';
+
+import Loading from './loading';
+import { AuthProvider } from '../providers/AuthProvider';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,7 +29,9 @@ export default function RootLayout({
         <DarkModeProvider>
           <AuthProvider>
             <NavBar />
-            <div className="bg-white dark:bg-gray-700 flex-1">{children}</div>
+            <div className="bg-white dark:bg-gray-700 flex-1">
+              <Suspense fallback={<Loading />}>{children}</Suspense>
+            </div>
             <BackToTop />
             <Footer />
           </AuthProvider>

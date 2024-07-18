@@ -26,64 +26,66 @@ const FromLogin: React.FC = () => {
       router.push('/');
     }
   };
+
   return (
-    <form className="space-y-6" onSubmit={handleSubmit}>
+    <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           Tài khoản
         </label>
-        <div className="mt-2">
-          <input
-            id="email"
-            name="email"
-            type="text"
-            placeholder="Nhập tài khoản"
-            autoComplete="email"
-            required
-            className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={formData.email}
-            onChange={e => setFormData({ ...formData, email: e.target.value })}
-          />
-        </div>
+        <input
+          name="email"
+          id="email"
+          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="name@company.com"
+          value={formData.email}
+          onChange={e => setFormData({ ...formData, email: e.target.value })}
+        />
       </div>
-
       <div>
-        <div className="flex items-center justify-between">
-          <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-            Mật khẩu
-          </label>
-          <div className="text-sm">
-            <Link href="/auth/forgotpassword" className="font-semibold text-indigo-600 hover:text-indigo-500">
-              Quên mật khẩu
-            </Link>
+        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Mật khẩu
+        </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="••••••••"
+          className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={formData.password}
+          onChange={e => setFormData({ ...formData, password: e.target.value })}
+        />
+      </div>
+      <div className="flex items-center justify-between">
+        <div className="flex items-start">
+          <div className="flex items-center h-5">
+            <input
+              id="remember"
+              aria-describedby="remember"
+              type="checkbox"
+              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
+            />
+          </div>
+          <div className="ml-3 text-sm">
+            <label htmlFor="remember" className="text-gray-500 dark:text-gray-300">
+              Ghi nhớ mật khẩu
+            </label>
           </div>
         </div>
-        <div className="mt-2">
-          <input
-            id="password"
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            placeholder="Nhập mật khẩu"
-            required
-            className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-            value={formData.password}
-            onChange={e => setFormData({ ...formData, password: e.target.value })}
-          />
-        </div>
+        <Link href="/auth/forgot-password" className="text-sm font-medium text-primary-600 hover:underline dark:text-white">
+          Quên mật khẩu?
+        </Link>
       </div>
-      <div>
-        <button
-          type="submit"
-          className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Đăng nhập
-        </button>
-      </div>
+      <button
+        type="submit"
+        className="w-full dark:text-white border bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      >
+        Đăng nhập
+      </button>
       <ButtonSocials />
-      <p className="text-right">
-        Bạn chưa có tài khoản?
-        <Link href="/auth/register" className="ml-2 hover:text-indigo-700">
+      <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+        Bạn không có tài khoản?{' '}
+        <Link href="/auth/register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">
           Đăng ký
         </Link>
       </p>

@@ -118,7 +118,7 @@ const FormRegister: React.FC = () => {
         </label>
         <input
           required
-          type="confirm-password"
+          type="password"
           name="confirm-password"
           id="confirm-password"
           placeholder="••••••••"

@@ -6,6 +6,7 @@ import { Toaster } from 'sonner';
 import NavBar from '@/components/NavBar';
 import { DarkModeProvider } from '@/context/darkMode-context';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           <AuthProvider>
             <NavBar />
             <div className="bg-white dark:bg-gray-700 flex-1">{children}</div>
+            <BackToTop />
             <Footer />
           </AuthProvider>
         </DarkModeProvider>

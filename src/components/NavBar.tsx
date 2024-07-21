@@ -49,7 +49,7 @@ const NavBar = () => {
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse dark:text-white">
           {status === 'unauthenticated' ? (
             <Link href="/auth/login" className={pathName === '/auth/login' ? 'text-blue-700' : 'font-medium'}>
-              <span className="font-medium hover:text-blue-500">Đăng nhập</span>
+              <span className="font-medium hover:text-blue-500 px-4 py-2 border rounded-full">Đăng nhập</span>
             </Link>
           ) : (
             <>

@@ -7,7 +7,7 @@ export default function CardHorizontal() {
       <div className="relative min-h-72 md:min-h-52">
         <Image src="/book1.jpg" alt="" fill sizes="(max-width: 600px) 100vw, 33vw" priority className="object-cover" />
       </div>
-      <div className="col-span-2 flex flex-col ">
+      <div className="col-span-2 flex flex-col pt-4 sm:pt-0">
         <div className="flex justify-between">
           <div className="uppercase text-sm hover:font-bold">Quan điểm và Xã hội</div>
           <svg className="w-7 h-7 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -16,7 +16,7 @@ export default function CardHorizontal() {
         </div>
         <div className="flex flex-col justify-between h-full">
           <div className="py-4">
-            <div className="pb-4 text-2xl font-bold">Tay guitar cừ khôi</div>
+            <div className="pb-0 sm:pb-4 text-2xl font-bold">Tay guitar cừ khôi</div>
             <div>Nội dung</div>
           </div>
           <div className="flex justify-between">

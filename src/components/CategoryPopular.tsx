@@ -4,7 +4,7 @@ export default function CategoryPopular() {
   return (
     <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
       <div className="mb-4 flex items-center justify-between gap-4 md:mb-8 ">
-        <h2 className="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Danh mục phổ biến</h2>
+        <h2 className="text-2xl font-semibold mb-4 dark:text-white uppercase">danh mục phổ biến</h2>
         <div className="flex items-center gap-2 text-sm">
           <Link href="#" className="dark:text-white">
             Xem thêm

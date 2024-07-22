@@ -5,7 +5,7 @@ export default function CardPopular() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
       <div className="grid grid-cols-3 gap-2">
-        <div className="relative min-h-32 sm:min-h-34">
+        <div className="relative h-28 md:h-32 lg:h-36">
           <Image src="/book2.jpg" alt="" fill sizes="(max-width: 600px) 100vw, 33vw" priority className="object-cover" />
         </div>
         <div className="col-span-2 flex flex-col justify-between">
@@ -36,7 +36,7 @@ export default function CardPopular() {
         </div>
       </div>
       {/* cut */}
-      <div className="grid grid-cols-3 gap-2">
+      {/* <div className="grid grid-cols-3 gap-2">
         <div className="relative min-h-32 sm:min-h-34">
           <Image src="/book2.jpg" alt="" fill sizes="(max-width: 600px) 100vw, 33vw" priority className="object-cover" />
         </div>
@@ -66,7 +66,7 @@ export default function CardPopular() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

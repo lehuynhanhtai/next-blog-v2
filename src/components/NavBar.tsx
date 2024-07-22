@@ -38,7 +38,7 @@ const NavBar = () => {
         {/* LOGO */}
         <Link href="/" className="relative items-center space-x-3 rtl:space-x-reverse h-12 w-36">
           <Image
-            src={darkMode === true ? '/whiteLogo.png' : '/blackLogo.png'}
+            src={darkMode ? '/whiteLogo.png' : '/blackLogo.png'}
             alt="logo"
             className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
             fill
@@ -53,7 +53,7 @@ const NavBar = () => {
             </Link>
           ) : (
             <>
-              <Link href={'/write'} className="font-medium md:mr-4">
+              <Link href={'#'} className="font-medium md:mr-4">
                 Viết bài
               </Link>
               <div className="relative">

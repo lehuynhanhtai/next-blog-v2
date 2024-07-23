@@ -95,7 +95,7 @@ const FormForgotPassword: React.FC = () => {
       </div>
       <div>
         <label htmlFor="confirm-password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-          Nhập lại mật khẩu
+          Nhập mật khẩu mới
         </label>
         <input
           type="password"

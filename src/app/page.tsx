@@ -21,7 +21,7 @@ export default function Home({ searchParams }: IProps) {
         <CardPopular />
         <Commercial />
       </div>
-      <div className="w-full bg-slate-600">
+      <div className="w-full dark:bg-slate-600 bg-slate-100">
         <TopPostMonth />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 mx-auto w-full max-w-screen-xl py-8">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function CardHorizontal() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 dark:text-white">
-      <div className="relative min-h-72 md:min-h-52">
+      <div className="relative h-72 sm:h-44 lg:h-52">
         <Image src="/book1.jpg" alt="" fill sizes="(max-width: 600px) 100vw, 33vw" priority className="object-cover" />
       </div>
       <div className="col-span-2 flex flex-col pt-4 sm:pt-0">
@@ -21,7 +21,7 @@ export default function CardHorizontal() {
           </div>
           <div className="flex justify-between">
             <div className="flex items-center gap-2">
-              <div className="relative  w-16 h-16">
+              <div className="relative  w-16 h-16 sm:w-12 sm:h-12">
                 <Image src="/book1.jpg" alt="" fill sizes="(max-width: 600px) 100vw, 33vw" priority className="object-cover rounded-full" />
               </div>
               <div>

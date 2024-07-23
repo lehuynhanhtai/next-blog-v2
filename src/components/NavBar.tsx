@@ -20,7 +20,7 @@ const NavBar = () => {
     { id: 1, name: 'Trang chủ', url: '/' },
     { id: 2, name: 'Liên hệ', url: '/contact' },
     { id: 3, name: 'Về S-Blog', url: '/about' },
-    { id: 4, name: 'Tìm kiếm', url: '/search' },
+    { id: 4, name: 'Tìm kiếm', url: '/search-articles' },
   ];
 
   const LinkAvatar = [

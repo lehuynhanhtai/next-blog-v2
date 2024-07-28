@@ -53,7 +53,7 @@ const NavBar = () => {
             </Link>
           ) : (
             <>
-              <Link href={'#'} className="font-medium md:mr-4">
+              <Link href="/write" className="font-medium md:mr-4">
                 Viết bài
               </Link>
               <div className="relative">

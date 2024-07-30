@@ -22,6 +22,11 @@ const nextConfig = {
         hostname: 'tailwindcss.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        pathname: '**',
+      },
     ],
   },
 

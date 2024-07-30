@@ -78,7 +78,7 @@ const NavBar = () => {
                 </button>
                 {/* MENU USER DOPDOWN */}
                 <div
-                  className={`absolute whitespace-nowrap right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600
+                  className={`absolute whitespace-nowrap right-0 z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-600
                     ${dropdownAvatar ? 'block' : 'hidden'}`}
                   id="user-dropdown"
                 >

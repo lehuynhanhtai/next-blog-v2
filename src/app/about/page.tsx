@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function About() {
   return (
     <>
@@ -14,7 +16,7 @@ export default function About() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-9">
             <div className="img-box">
-              <img src="https://pagedone.io/asset/uploads/1702034769.png" alt="About Us tailwind page" className="max-lg:mx-auto" />
+              <Image src="https://pagedone.io/asset/uploads/1702034769.png" alt="About Us tailwind page" className="max-lg:mx-auto w-auto h-auto" width={500} height={500} />
             </div>
             <div className="lg:pl-[100px] flex items-center">
               <div className="data w-full">
@@ -34,7 +36,7 @@ export default function About() {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-9 ">
             <div className="lg:pr-24 flex items-center">
               <div className="data w-full">
-                <img src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page" className="block lg:hidden mb-9 mx-auto" />
+                <Image src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page" className="block lg:hidden mb-9 mx-auto w-auto h-auto" priority={false} width={500} height={500} />
                 <h2 className="font-manrope font-bold text-4xl lg:text-5xl text-black mb-9 max-lg:text-center dark:text-white">We are Creative Since 2005</h2>
                 <p className="font-normal text-xl leading-8 text-gray-500 max-lg:text-center max-w-2xl mx-auto dark:text-gray-300">
                   Pagedone isn’t just a collection of components and guidelines; a philosophy. We go beyond aesthetics, prioritizing accessibility, scalability, and usability. Every element, from the tiniest detail to the grandest layout,
@@ -43,7 +45,7 @@ export default function About() {
               </div>
             </div>
             <div className="img-box ">
-              <img src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page" className="hidden lg:block " />
+              <Image src="https://pagedone.io/asset/uploads/1702034785.png" alt="About Us tailwind page" className="hidden lg:block w-auto h-auto" priority={false} width={500} height={500} />
             </div>
           </div>
         </div>
@@ -88,46 +90,46 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="grid gap-4">
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" />
-            </div>
-          </div>
-          <div className="grid gap-4">
-            <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" />
-            </div>
-            <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" width={500} height={500} />
             </div>
           </div>
           <div className="grid gap-4">
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" width={500} height={500} />
             </div>
           </div>
           <div className="grid gap-4">
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" width={500} height={500} />
             </div>
             <div>
-              <img className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="" />
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" width={500} height={500} />
+            </div>
+          </div>
+          <div className="grid gap-4">
+            <div>
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="" width={500} height={500} />
+            </div>
+            <div>
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="" width={500} height={500} />
+            </div>
+            <div>
+              <Image className="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="" width={500} height={500} />
             </div>
           </div>
         </div>

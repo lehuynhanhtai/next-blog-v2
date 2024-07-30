@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Contact() {
   return (
     <section className="py-24">
@@ -6,7 +8,7 @@ export default function Contact() {
           <div className="lg:mb-0 mb-10">
             <div className="group w-full h-full">
               <div className="relative h-full">
-                <img src="https://pagedone.io/asset/uploads/1696488602.png" alt="ContactUs tailwind section" className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700" />
+                <Image src="https://pagedone.io/asset/uploads/1696488602.png" alt="ContactUs tailwind section" className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700" width={500} height={500} />
                 <h1 className="font-manrope text-white text-4xl font-bold leading-10 absolute top-11 left-11">Liên hệ với chúng tôi</h1>
                 <div className="absolute bottom-0 w-full lg:p-11 p-5">
                   <div className="bg-white rounded-lg p-6 block">

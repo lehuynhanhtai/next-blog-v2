@@ -1,3 +1,4 @@
+import Author from '@/components/Author';
 import CardPost from '@/components/CardHorizontal';
 import CardPopular from '@/components/CardPopular';
 import Carousel from '@/components/Carousel';
@@ -6,6 +7,8 @@ import CategoryPopular from '@/components/CategoryPopular';
 import Commercial from '@/components/Commercial';
 import Panigation from '@/components/Panigation';
 import TopPostMonth from '@/components/TopPostMonth';
+import Image from 'next/image';
+import Link from 'next/link';
 
 interface IProps {
   searchParams?: { [key: string]: string | string[] | undefined };
@@ -31,8 +34,10 @@ export default function Home({ searchParams }: IProps) {
           <Panigation />
         </div>
         <div className="hidden md:block">
-          <h2 className="text-2xl font-semibold mb-4 dark:text-white uppercase">Chủ đề</h2>
-          <Category />
+          <div className="flex flex-col gap-6">
+            <Category />
+            <Author />
+          </div>
         </div>
       </div>
     </>

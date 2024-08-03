@@ -9,6 +9,7 @@ import Footer from '@/components/Footer';
 import Loading from './loading';
 import { AuthProvider } from '../providers/AuthProvider';
 import './globals.css';
+import BackToTop from '@/components/BackToTop';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
             <NavBar />
             <div className="bg-white dark:bg-gray-700 flex-1">
               <Suspense fallback={<Loading />}>{children}</Suspense>
+              <BackToTop />
             </div>
             <Footer />
           </AuthProvider>
